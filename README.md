@@ -7,4 +7,4 @@
 - JavaScript
 - Gulp
 
-![Image alt](https://github.com/ludaalt/Hungry_People/raw/main/src/img/desktop.png)
+![Image alt](https://github.com/ludaalt/Hungry_People/raw/main/src/img/desktop.jpg)
