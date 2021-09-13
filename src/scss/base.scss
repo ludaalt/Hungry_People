@@ -1,0 +1,157 @@
+$white-color: #ffffff;
+$black-color: #000000;
+$yellow-color: #E8C300;
+$gray-color: rgba(255, 255, 255, 0.2);
+
+%center-uppercase {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+%bg-norepeat-cover {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+%bg-norepeat-center {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+%flex-column-center {
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin font-pack($weight, $size, $line-height: $size) {
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+}
+
+@mixin pseudo-elem($position: absolute, $top: auto, $right: auto, $bottom: auto, $left: auto, $content: '') {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    content: $content; 
+}
+
+@font-face {
+	font-family: 'Banny'; 
+	src: url('../fonts/Banny-Round.otf'); 
+}
+
+*, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-style: normal;
+    color: $black-color;
+}
+
+img {
+    @include size(100%, auto);
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.list {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.order-less {
+    order: -1;
+}
+
+.white-text {
+    color: $white-color;
+}
+
+.note {
+    @include font-pack(bold, 12px, 14px);
+    letter-spacing: 0.5em;
+    @extend %center-uppercase;
+}
+
+.note-section {
+    margin-top: -40px;
+    margin-bottom: 40px;
+ }
+
+.title {
+    position: relative;
+    font-family: 'Banny';
+    @extend %center-uppercase;
+
+    &::after {
+        @include pseudo-elem(absolute, 110%, auto, auto, calc(50% - 30px), '');
+        @include size(60px, 5px);
+        background-color: $yellow-color;
+        border-radius: 50px;
+    }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.1;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .container {
+        width: 90%;
+    }    
+}
+
+@media screen and (max-width: 350px) {
+    .container {
+        width: 100%;
+    }    
+}

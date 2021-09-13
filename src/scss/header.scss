@@ -1,0 +1,360 @@
+@import  'base';
+
+.main-header {
+    background-image: url('../../img/header-bg.jpg');
+    @extend %bg-norepeat-cover;
+}
+
+.main-navigation {
+    position: relative;
+    text-transform: uppercase;
+    padding-top: 25px
+}
+
+.user-navigation {
+    border-bottom: 1px solid $gray-color;
+    position: relative;  
+    display: flex;
+}
+
+.user-navigation {
+    li {
+       padding: 25px 40px;
+
+        a {
+            @include font-pack(bold, 12px, 18px);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+} 
+
+.menu-checkbox {
+    position: absolute;
+    opacity: 0;
+
+    &:checked {
+        ~ .menu-button {
+            span {
+                transform: rotate(45deg);
+
+                &::before {
+                    top: 0;
+                    transform: rotate(0);
+                }
+
+                &::after {
+                    top: 0;
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+}
+
+.menu-button {
+    display: none;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;  
+    cursor: pointer;
+    @include size(26px);
+
+    span,
+    span::before, 
+    span::after {
+        display: block;
+        @include pseudo-elem(absolute); 
+        @include size(100%, 2px);  
+        background-color: $yellow-color;
+        transition-duration: 0.25s;
+    }
+    
+    span::before {
+        top: -8px; 
+    }
+
+    span::after {
+        top: 8px;
+    }
+}
+
+.main-logo {
+    position: absolute;
+    left: 50%;
+    margin-left: -75px; 
+    @include size(150px);
+}
+
+.schedule {
+    @include font-pack(bold, 12px);
+    padding-bottom: 225px; 
+    padding-top: 80px;
+    text-align: center;    
+    transform: rotate(-180deg);    
+    writing-mode: vertical-rl;
+    width: 10%;
+}
+
+.title-section {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 100px;
+    flex-direction: column;
+
+    border-left: 1px solid $gray-color;
+    border-right: 1px solid $gray-color;
+}
+
+.main-title {
+    margin: 10px auto 40px auto;
+ 
+    font-family: 'Banny';
+    @include font-pack(auto, 96px);
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    @include size(200px, 60px);
+    @include font-pack(bold, 12px, 20px);
+    background: none;
+    border: 1px solid $gray-color;
+    border-radius: 5px;
+    transition: all 200ms ease; 
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $yellow-color;
+    }
+
+    &:not(:last-child) {
+        margin-right: 40px;
+    }
+}
+
+.title-section  {
+    padding-top: 225px;    
+}
+
+.social {
+    padding-top: 225px;
+    padding-bottom: 80px;
+    width: 10%;
+    flex-direction: column;
+    align-items: flex-end;    
+}
+
+$icons: "fb", "tw", "inst";
+$icons-length: length($icons);
+
+@mixin icon($icon-name) {
+    &-#{$icon-name} {
+        background-image: url('../img/icons/#{$icon-name}.svg');  
+    }
+}
+
+.social-link {    
+    cursor: pointer;
+    @include size(60px);
+    border: 1px solid $gray-color;
+    border-radius: 50%;
+    @extend %bg-norepeat-center;
+
+    a {
+        display: inline-block;
+        @include size(100%);
+
+        &:focus {
+            outline: none;
+            border: 1px solid $white-color;
+            border-radius: 50%;
+        }
+    }
+
+    &:hover {
+        border: 1px solid $white-color;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px; 
+    }
+
+    @for $i from 1 through $icons-length {
+        @include icon(nth($icons, $i));
+    }
+}
+
+.to-down {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;    
+    cursor: pointer;    
+    border: 1px solid $gray-color;
+    border-radius: 50%;
+    color: #808080;   
+    padding: 10px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $white-color;
+        border-radius: 50%;
+    }
+
+    &:hover {
+        border: 1px solid $white-color;  
+    }
+
+    .fa {
+        background-color: $white-color;
+        border-radius: 50%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    &::before {
+        @include pseudo-elem(absolute, -460px, auto, auto, 50%);
+        min-height: 460px;
+        width: 1px;        
+        background-color: $gray-color;
+    }
+
+    &::after {
+        @include pseudo-elem(absolute, auto, auto, -100px, 50%);
+        min-height: 100px;
+        width: 1px;        
+        background-color: $gray-color;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    /*.main-title {
+        max-width: 70%;
+    }*/
+    
+    .title-section {
+        padding-top: 15vw;
+    }
+
+    .user-navigation {
+        width: 40%;
+        flex-wrap: wrap;
+        justify-content: space-around; 
+        
+        li {
+            padding-left: 0;
+            padding-right: 0;
+            width: 25%;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .title-section {
+        border: none;
+        padding-top: 15vw;
+        padding-bottom: 10vw;
+    }
+
+    .title-wrap {
+        flex-direction: column;
+    }
+
+    .schedule { 
+        padding: 20px;          
+        transform: rotate(0deg);    
+        writing-mode: lr-tb;
+        width: 100%;
+        order: 2;
+    }
+
+    .social {
+        padding: 20px;
+        width: 100%;
+        flex-direction: row;
+
+        .social-link:not(:last-child) {
+            margin-right: 10px;
+            margin-bottom: 0;
+        }        
+    }
+
+    .button-wrap {
+        flex-direction: column;
+        align-items: center;
+
+        .button {
+            margin: 0;
+            
+            &:first-child {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .to-down {
+        &::before, &::after {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .title-section {
+        padding-top: 10vw;
+    }
+
+    .title-wrap {
+        margin-top: 150px;
+    }
+
+    .user-navigation {
+        display: none;   
+    }
+
+    .menu-button {
+        display: flex;
+        z-index: 2000;
+    }
+
+    #menu-checkbox:checked ~ .user-navigation {
+        display: block;
+        top: 0;
+        left: 0;
+        transition-duration: 0.25s;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        z-index: 1000;
+        padding-top: 30px;
+        padding-left: 60px;
+        height: 230px;
+        max-width: 200px;
+
+        &:last-child {
+            margin-top: 230px;
+        }
+
+        li {
+            display: block;
+            padding: 12px 24px;    
+            transition-duration: 0.25s;
+        }
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .main-title {
+        @include font-pack(auto, 15vw);
+    }
+}
+
+@media screen and (max-width: 460px) {
+    #menu-checkbox:checked ~ .user-navigation {
+        width: 400px;
+    }
+}

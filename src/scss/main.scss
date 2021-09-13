@@ -1,0 +1,578 @@
+@import 'base';
+
+.section {
+    padding: 80px 0;
+}
+
+.master-section {
+    background-image: url('../img/master-bg.jpg');
+}
+
+.specialties-section, 
+.event-section {
+    background-image: url('../img/specialties-bg.jpg');   
+    @extend %bg-norepeat-cover;
+}
+
+.master-section,
+.specialties-section {
+
+    .bold-text, 
+    .light-text {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+.text-wrap, 
+.graphic-wrap {
+    width: 50%;
+    max-width: 600px;
+}
+
+.text-wrap {
+    @extend %flex-column-center;
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    @include font-pack(normal, 36px, 48px);
+}
+
+.bold-text {
+    margin-bottom: 20px;
+    @include font-pack(bold, 18px, 28px);
+}
+
+.light-text { 
+    @include font-pack(normal, 14px, 24px); 
+}
+
+.image-wrap {
+    width: 80%;
+    position: relative;
+
+    &::after {
+        @include pseudo-elem(absolute, 25%, -25%);
+        @include size(50%);    
+    
+        border: 20px solid $yellow-color;
+        filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.5));
+        border-radius: 5px;
+    }
+
+    img {
+        filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.5));
+        border-radius: 5px;
+    }
+    
+}
+
+.pseudo-left {
+    .image-wrap::after {
+        left: -25%;
+    }
+}
+
+.form {
+    width: 100%;
+    
+    p {
+        width: 100%;
+    }
+}
+
+.input {
+    margin-bottom: 10px;
+    appearance: none;
+    @include size(49%, 60px);
+    
+    background: #E5E5E5;
+    color: rgba(51, 51, 51, 0.5);
+    border: none;
+    border-radius: 5px;
+
+    &::placeholder {
+        padding-left: 20px;
+    }
+}
+
+.select {
+    padding: 20px 40px 20px 20px;
+    background-image: url('../img/icons/select.svg');
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+
+}
+
+.form-button {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: $white-color;
+    background-color: $yellow-color;
+    border: none;
+    border-radius: 5px;
+    @include font-pack(bold, 12px, 20px);
+    text-transform: uppercase;
+
+    &:hover {
+        opacity: 0.8;    
+    }
+}
+
+.form-schedule {
+    @include font-pack(normal, 12px, 12px);
+    text-align: center;
+    color: rgba(51, 51, 51, 0.5);
+    margin-top: 35px;
+    margin-bottom: -35px;
+
+    span {
+        font-weight: bold;
+    }
+
+    a {
+        color: inherit;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:first-child {
+            position: relative;
+
+            &::after {
+                @include pseudo-elem(absolute, auto, auto, auto, auto, '/');
+            }
+        }
+    }
+
+    &-white {
+        color: rgba(255, 255, 255, 0.5); 
+    }
+}
+
+.slide-noactive {
+    display: none;
+}
+
+.switch {
+    margin-top: 50px;
+    margin-bottom: -50px;
+    text-align: center;
+    padding-bottom: 20px;  
+}
+
+.slide-switch {
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    @include size(10px);
+
+    &-active {
+        background-color: $white-color;
+    }
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid $white-color;
+        border-radius: 50%;
+    }
+}
+
+.menu-section .container {
+    flex-direction: column;
+}
+
+.undertitle-text {
+    max-width: 565px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.menu-list {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 840px;
+
+    li {
+        padding: 20px 0;
+        flex-grow: 1;
+        max-width: 120px;
+        @include font-pack(bold, 12px, 18px);
+        color: #333333;
+        text-align: center;
+        cursor: pointer;
+    
+        &:not(:last-child) {
+            border-right: 1px solid rgba(51, 51, 51, 0.2);
+        }
+    
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.menu-content {
+    flex-wrap: wrap;
+
+    .product-wrap {
+        width: 30%;
+        min-width: 380px;
+        margin-bottom: 40px;
+        font-family: 'Banny';
+        @include font-pack(normal, 18px);
+        color: #333333;
+    }
+
+    .product-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .product-title {
+        position: relative;
+
+        &::after {
+            @include pseudo-elem(absolute, 10%, -12%, auto, auto, '....');
+        }
+    }
+
+    .product-description {
+        font-size: 11px;
+        color: #bbbbbb;
+    }
+}
+
+.event-section {
+    .note {
+        color: $white-color;
+    }
+}
+
+.wedding {
+    position: relative;   
+}
+
+.wedding img,
+.corporate img {
+    height: 100%;
+}
+
+.wedding::before,
+.corporate::before {
+    position: absolute;
+    z-index: 100;
+    color: $white-color;
+    height: 100%;
+    background-color: $black-color;
+    font-family: 'Banny';
+    font-size: 24px;
+    text-indent: 20px;
+    text-transform: uppercase;
+    padding: 0 25px;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    writing-mode: vertical-rl;
+}
+
+.wedding::before {    
+    content: 'weddings';    
+    right: 0%;          
+}
+
+.corporate::before {
+    content: 'corporate pzrties';
+    left: 0%;    
+    transform: rotate(-180deg);
+}
+
+.gallery {
+    li {
+        width: 25%;
+    }
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.contact-form-input {
+    width: 32%;
+}
+
+.textarea {
+    margin-bottom: 10px;
+    padding: 20px;
+    @include size(100%, 120px);
+    @include font-pack(normal, 14px, 19px);
+
+    background: #E5E5E5;
+    border: none;
+    border-radius: 5px;
+    color: rgba(51, 51, 51, 0.5);
+}
+
+.contact-form-button {
+    width: 50%;
+}
+
+.contact-line {
+    width: 50%;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    align-items: center;
+
+    span {
+        display: inline-block;   
+        position: relative;
+        @include font-pack(bold, 12px);
+        color: rgba(51, 51, 51, 0.5);
+    
+        &::before {
+            @include pseudo-elem(absolute, -2px, auto, auto, -20px);
+            @include size(15px);
+        }
+    
+        a {
+            color: inherit;
+    
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:not([href*=mailto]) {
+
+                &:nth-child(1) {
+                    position: relative;
+        
+                    &::after {
+                        @include pseudo-elem(absolute, auto, auto, auto, auto, '/');
+                    }
+                }
+            }
+        }
+    }
+}
+
+$contact-icons: "place", "phone", "email";
+$contact-icons-length: length($contact-icons);
+
+@mixin contact-icon($contact-icon) {
+    .#{$contact-icon}::before {
+        background-image: url('../img/icons/#{$contact-icon}.svg');  
+    }
+}
+
+@for $i from 1 through $contact-icons-length {
+    @include contact-icon(nth($contact-icons, $i));    
+}
+
+
+/*.master-section,
+.specialties-section,
+.event-section {
+    position: relative;
+
+    &::after {
+        @include pseudo-elem(absolute, 0, auto, auto, 50%);
+        @include size(1px, 100%);       
+        background-color: $gray-color;
+        z-index: 100;
+    }
+}
+
+body {
+    position: relative;
+
+    &::after {
+        @include pseudo-elem(absolute, 98px, auto, auto, 20%);
+        @include size(1px, 100%);       
+        background-color: $gray-color;
+        z-index: 100;
+    }
+
+    &::before {
+        @include pseudo-elem(absolute, 98px, 20%, auto, auto);
+        @include size(1px, 100%);       
+        background-color: $gray-color;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    body {
+        &::after {
+            display: none;
+        }
+    
+        &::before {
+            display: none;
+        }
+    } 
+}*/
+
+
+@media screen and (max-width: 1350px) {
+    .contact-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .text-wrap, 
+    .graphic-wrap {
+        width: 45%;
+    }
+
+    .graphic-wrap {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .menu-content {
+        justify-content: space-around;
+
+        .product-wrap {
+            width: 35%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 1350px) and (min-width: 751px) {
+    .wedding::before,
+    .corporate::before {
+        font-size: 2vw;
+        padding: 0 2vw;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .menu-content {
+        .product-wrap {
+            width: 90%;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .section {
+        .container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .text-wrap, 
+    .graphic-wrap {
+        width: 100%;
+    }
+
+    .graphic-wrap {
+        margin-top: 20px;
+    }
+
+    .graphic-wrap.order-less {
+        order: 2;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .gallery {
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        li {
+            width: 50%;
+        }
+    }
+    
+    .input-wrap {
+        flex-direction: column;
+
+        .input {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .menu-list {
+        flex-wrap: wrap;
+
+        li {
+            max-width: 33%;
+            min-width: 25%;
+            flex-grow: 1;
+            border-top: 1px solid rgba(51, 51, 51, 0.2);
+            border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+        }
+    }
+} 
+
+@media screen and (max-width: 580px) {
+    .form-schedule {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80%;
+    }
+
+    .contact-wrap {
+        flex-direction: column;
+    }
+
+    .contact-form-button {
+        width: 100%;
+        order: -1;
+        margin-bottom: 10px;
+    }
+
+    .contact-line {
+        width: 100%;
+
+        span {
+            padding-top: 10px;
+
+            &::before {
+                top: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .menu-content {
+        width: 100%;
+    
+        .product-wrap {
+            font-size: 4vw;
+            min-width: 100%;
+        }    
+    
+        .product-description {
+            font-size: 3vw;
+        }
+    }
+}
+
+@media screen and (max-width: 380px)  {
+    .wedding::before,
+    .corporate::before {
+        font-size: 5vw;
+    }
+}

@@ -1,0 +1,11 @@
+@import 'base';
+
+.main-footer {
+    padding: 45px 0;
+
+    @include font-pack(normal, 12px);
+    
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.9);
+}
